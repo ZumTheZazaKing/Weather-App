@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import humidityImage from './images/humidity.png';
 import windSpeedImage from './images/wind.png';
 import compass from './images/compass.png';
@@ -8,7 +8,7 @@ import sunsetImage from './images/sunset.png';
 
 function App() {
 
-  let [inputCity, setInputCity] = useState("");
+  let [inputCity, setInputCity] = useState("georgetown");
 
   let [cityName, setCityName] = useState("");
   let [country,setCountry] = useState("");
@@ -25,7 +25,6 @@ function App() {
   let [sunset, setSunset] = useState("");
 
   const search = e => {
-    e.preventDefault();
 
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=78917f7c092b0c1fe155b704af021ffb`)
     .then(res => res.json())
@@ -63,6 +62,10 @@ function App() {
 
   }
 
+  useEffect(() => {
+    search();
+  },[])
+
 
   return (
     <div className="App">
@@ -74,7 +77,7 @@ function App() {
         <h4>Feels like {(feelTemp - 273.15).toFixed(0)}{"°C"}</h4>
       </div>
       <div id="RightSide">
-        <form onSubmit={search}>
+        <form onSubmit={e => {e.preventDefault();search()}}>
           <input type="text" placeholder="Enter city name" value={inputCity} onChange={e => setInputCity(e.target.value)} required/>
         </form>
         <br/>
