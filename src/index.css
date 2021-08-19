@@ -41,6 +41,11 @@ body .App #RightSide input[type=text] {
   border: none;
   outline: none;
 }
+body .App #RightSide h6 {
+  margin: 0;
+  padding: 0;
+  color: grey;
+}
 body .App #RightSide input[type=text]:focus {
   box-shadow: 0 0 0 2px black;
 }

@@ -86,6 +86,7 @@ function App() {
           <div>Sunrise: <br/>{sunrise}<img src={sunriseImage} alt="" width="50" height="50"/></div>
           <div>Sunset: <br/>{sunset}<img src={sunsetImage} alt="" width="50" height="50"/></div>
         </div>
+        <h6>ZUMTHEZAZAKING &copy;2021</h6>
       </div>
     </div>
   );
