@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap');
 
 *{
     box-sizing: border-box;
@@ -22,10 +22,14 @@ body{
             h2,h4{
                 color: grey;
             }
+            h4{
+                font-weight: 500;
+            }
             #temp{
                 font-size: 48px;
                 margin: 0;
                 padding: 0;
+                font-weight: 700;
             }
         }
 
@@ -63,12 +67,20 @@ body{
                 div{
                     background-color: white;
                     border-radius: 10px;
-                    padding: 10px;
+                    padding: 5px 10px;
+                    padding-bottom: 10px;
                     margin: 10px;
                     text-align: right;
                     width: 150px;
+                    font-weight: 700;
+                    font-size: 24px;
                     img{
                         float: left;
+                    }
+                    span{
+                        color: grey;
+                        font-weight: 500;
+                        font-size: 14px;
                     }
                 }
 

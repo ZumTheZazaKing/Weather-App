@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap");
 * {
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
@@ -22,10 +22,14 @@ body .App #LeftSide {
 body .App #LeftSide h2, body .App #LeftSide h4 {
   color: grey;
 }
+body .App #LeftSide h4 {
+  font-weight: 500;
+}
 body .App #LeftSide #temp {
   font-size: 48px;
   margin: 0;
   padding: 0;
+  font-weight: 700;
 }
 body .App #RightSide {
   background-color: #eeeeee;
@@ -57,13 +61,21 @@ body .App #RightSide #info {
 body .App #RightSide #info div {
   background-color: white;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px 10px;
+  padding-bottom: 10px;
   margin: 10px;
   text-align: right;
   width: 150px;
+  font-weight: 700;
+  font-size: 24px;
 }
 body .App #RightSide #info div img {
   float: left;
+}
+body .App #RightSide #info div span {
+  color: grey;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 @media only screen and (max-width: 600px) {

@@ -100,12 +100,12 @@ function App() {
         </form>
         <br/>
         <div id="info">
-          <div>Humidity: <br/>{humidity}%<img src={humidityImage} alt="" width="50" height="50"/></div>
-          <div>Wind Speed: <br/>{windSpeed} m/s<img src={windSpeedImage} alt="" width="50" height="50"/></div>
-          <div>Wind Direction: <br/>{windDirection}<img src={compass} alt="" width="50" height="50"/></div>
-          <div>Visibility: <br/>{visibility} km<img src={binoculars} alt="" width="50" height="50"/></div>
-          <div>Sunrise: <br/>{sunrise}<img src={sunriseImage} alt="" width="50" height="50"/></div>
-          <div>Sunset: <br/>{sunset}<img src={sunsetImage} alt="" width="50" height="50"/></div>
+          <div><span>Humidity:</span> <br/>{humidity}<br/><span>%</span><img src={humidityImage} alt="" width="50" height="50"/></div>
+          <div><span>Wind Speed:</span> <br/>{windSpeed}<br/> <span>m/s</span><img src={windSpeedImage} alt="" width="50" height="50"/></div>
+          <div><span>Wind Direction:</span> <br/>{windDirection}<img src={compass} alt="" width="50" height="50"/></div>
+          <div><span>Visibility:</span> <br/>{visibility}<br/><span>km</span><img src={binoculars} alt="" width="50" height="50"/></div>
+          <div><span>Sunrise:</span> <br/>{sunrise}<img src={sunriseImage} alt="" width="50" height="50"/></div>
+          <div><span>Sunset:</span> <br/>{sunset}<img src={sunsetImage} alt="" width="50" height="50"/></div>
         </div>
         <h6>ZUMTHEZAZAKING &copy;2021</h6>
       </div>
