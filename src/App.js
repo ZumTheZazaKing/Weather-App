@@ -6,6 +6,9 @@ import binoculars from './images/binoculars.png';
 import sunriseImage from './images/sunrise.png';
 import sunsetImage from './images/sunset.png';
 
+import 'weather-react-icons/lib/css/weather-icons.css';
+import { WeatherIcon } from 'weather-react-icons';
+
 function App() {
 
   let [inputCity, setInputCity] = useState("georgetown");
@@ -14,7 +17,7 @@ function App() {
   let [country,setCountry] = useState("");
   let [description, setDescription] = useState("");
 
-  let [weatherIcon, setWeatherIcon] = useState("");
+  let [weatherId, setWeatherId] = useState(200);
 
   let [temp, setTemp] = useState("");
   let [feelTemp, setFeelTemp] = useState("");
@@ -35,7 +38,7 @@ function App() {
       setCityName(data.name);
       setCountry(data.sys.country);
       setDescription(data.weather[0].description);
-      setWeatherIcon("http://openweathermap.org/img/w/" + data.weather[0].icon + ".png");
+      setWeatherId(data.weather[0].id);
       setTemp(data.main.temp);
       setFeelTemp(data.main.feels_like);
 
@@ -137,7 +140,7 @@ function App() {
       <div id="LeftSide">
         <h1>{cityName}, {country}</h1>
         <h2>{description}</h2>
-        <img src={weatherIcon} alt="" width="100" height="100"/>
+        <WeatherIcon iconId={weatherId} name="owm" night={hours > 19 || hours < 7 ? true : false} className="weatherIcon"/>
         <p id="temp">{parseInt(temp)}°C</p>
         <h4>Feels like {parseInt(feelTemp)}°C</h4>
       </div>
