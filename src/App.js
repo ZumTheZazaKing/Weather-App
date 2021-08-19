@@ -38,7 +38,25 @@ function App() {
 
       setHumidity(data.main.humidity);
       setWindSpeed(data.wind.speed);
-      setWindDirection(data.wind.deg);
+      let windDegrees = data.wind.deg;
+      if(348.75 < windDegrees && windDegrees <= 11.25){
+        setWindDirection("N");
+      } else if(11.25 < windDegrees && windDegrees <= 78.75){
+        setWindDirection("NE");
+      } else if(78.75 < windDegrees && windDegrees <= 101.25){
+        setWindDirection("E")
+      } else if(101.25 < windDegrees && windDegrees <= 168.75){
+        setWindDirection("SE");
+      } else if(168.75 < windDegrees && windDegrees <= 191.25){
+        setWindDirection("S");
+      } else if(191.25 < windDegrees && windDegrees <= 258.75){
+        setWindDirection("SW");
+      } else if(258.75 < windDegrees && windDegrees <= 281.25){
+        setWindDirection("W");
+      } else if(281.25 < windDegrees && windDegrees <= 348.75){
+        setWindDirection("NW");
+      }
+
       setVisibility(data.visibility/1000);
 
       const sunriseObject = new Date(parseInt(data.sys.sunrise) * 1000);
@@ -84,7 +102,7 @@ function App() {
         <div id="info">
           <div>Humidity: <br/>{humidity}%<img src={humidityImage} alt="" width="50" height="50"/></div>
           <div>Wind Speed: <br/>{windSpeed} m/s<img src={windSpeedImage} alt="" width="50" height="50"/></div>
-          <div>Wind Direction: <br/>{windDirection}°<img src={compass} alt="" width="50" height="50"/></div>
+          <div>Wind Direction: <br/>{windDirection}<img src={compass} alt="" width="50" height="50"/></div>
           <div>Visibility: <br/>{visibility} km<img src={binoculars} alt="" width="50" height="50"/></div>
           <div>Sunrise: <br/>{sunrise}<img src={sunriseImage} alt="" width="50" height="50"/></div>
           <div>Sunset: <br/>{sunset}<img src={sunsetImage} alt="" width="50" height="50"/></div>
