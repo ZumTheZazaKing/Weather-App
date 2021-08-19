@@ -46,6 +46,12 @@ body .App #RightSide {
   max-width: 600px;
   text-align: center;
 }
+body .App #RightSide #datetime {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-weight: 700;
+}
 body .App #RightSide input[type=text] {
   padding: 5px 10px;
   border: none;
@@ -88,6 +94,10 @@ body .App #RightSide #info div span {
   .App {
     flex-direction: column;
     margin-top: 0px !important;
+  }
+
+  #datetime {
+    text-align: center !important;
   }
 }
 

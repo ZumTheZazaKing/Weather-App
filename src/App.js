@@ -24,9 +24,9 @@ function App() {
   let [sunrise, setSunrise] = useState("");
   let [sunset, setSunset] = useState("");
 
-  const search = e => {
+  const search = (para) => {
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=78917f7c092b0c1fe155b704af021ffb`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${para || inputCity}&appid=78917f7c092b0c1fe155b704af021ffb`)
     .then(res => res.json())
     .then(data => {
       setCityName(data.name);
@@ -57,7 +57,7 @@ function App() {
         setWindDirection("NW");
       }
 
-      setVisibility(data.visibility/1000);
+      setVisibility((data.visibility/1000).toFixed(1));
 
       const sunriseObject = new Date(parseInt(data.sys.sunrise) * 1000);
       const sunsetObject = new Date(parseInt(data.sys.sunset) * 1000);
@@ -76,13 +76,55 @@ function App() {
       setSunset(sunsetHours + ":" + sunsetMinutes);
 
     })
-    .catch(err => alert(`An Error Occured:\n ${err}`))
+    .catch(err => {
+      alert("Enter a CITY and type it CORRECTLY");
+      search("georgetown");
+    })
 
   }
 
   useEffect(() => {
     search();
   },[])
+
+
+  let [hours, setHours] = useState("");
+  let [minutes, setMinutes] = useState("");
+  let [day, setDay] = useState("");
+
+  setInterval(() => {
+
+    const now = new Date();
+
+    setHours(now.getHours());
+    setMinutes(now.getMinutes());
+    switch (now.getDay()){
+      case 0:
+        setDay("Sunday");
+        break;
+      case 1:
+        setDay("Monday");
+        break;
+      case 2:
+        setDay("Tuesday");
+        break;
+      case 3:
+        setDay("Wednesday");
+        break;
+      case 4:
+        setDay("Thursday");
+        break;
+      case 5:
+        setDay("Friday");
+        break;
+      case 6:
+        setDay("Saturday");
+        break;
+      default:
+        return;
+    }
+    
+  },1000)
 
 
   return (
@@ -95,6 +137,7 @@ function App() {
         <h4>Feels like {(feelTemp - 273.15).toFixed(0)}{"°C"}</h4>
       </div>
       <div id="RightSide">
+        <p id="datetime"><span>{day}</span>, {hours}:{minutes}</p><br/>
         <form onSubmit={e => {e.preventDefault();search()}}>
           <input type="text" placeholder="Enter city name" value={inputCity} onChange={e => setInputCity(e.target.value)} required/>
         </form>
