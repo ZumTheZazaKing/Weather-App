@@ -13,20 +13,23 @@ function App() {
   let [cityName, setCityName] = useState("");
   let [country,setCountry] = useState("");
   let [description, setDescription] = useState("");
+
   let [weatherIcon, setWeatherIcon] = useState("");
+
   let [temp, setTemp] = useState("");
   let [feelTemp, setFeelTemp] = useState("");
 
   let [humidity, setHumidity] = useState("");
   let [windSpeed, setWindSpeed] = useState("");
   let [windDirection, setWindDirection] = useState("");
+  let [windDegs, setWindDegs] = useState("");
   let [visibility, setVisibility] = useState("");
   let [sunrise, setSunrise] = useState("");
   let [sunset, setSunset] = useState("");
 
   const search = (para) => {
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${para || inputCity}&appid=78917f7c092b0c1fe155b704af021ffb`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${para || inputCity}&appid=78917f7c092b0c1fe155b704af021ffb&units=metric`)
     .then(res => res.json())
     .then(data => {
       setCityName(data.name);
@@ -38,6 +41,7 @@ function App() {
 
       setHumidity(data.main.humidity);
       setWindSpeed(data.wind.speed);
+      setWindDegs(data.wind.deg);
       let windDegrees = data.wind.deg;
       if(348.75 < windDegrees && windDegrees <= 11.25){
         setWindDirection("N");
@@ -98,6 +102,7 @@ function App() {
 
     setHours(now.getHours());
     setMinutes(now.getMinutes());
+
     switch (now.getDay()){
       case 0:
         setDay("Sunday");
@@ -133,11 +138,11 @@ function App() {
         <h1>{cityName}, {country}</h1>
         <h2>{description}</h2>
         <img src={weatherIcon} alt="" width="100" height="100"/>
-        <p id="temp">{(temp - 273.15).toFixed(0)}{"°C"}</p>
-        <h4>Feels like {(feelTemp - 273.15).toFixed(0)}{"°C"}</h4>
+        <p id="temp">{parseInt(temp)}°C</p>
+        <h4>Feels like {parseInt(feelTemp)}°C</h4>
       </div>
       <div id="RightSide">
-        <p id="datetime"><span>{day}</span>, {hours}:{minutes}</p><br/>
+        <p id="datetime"><span>{day}</span>, {hours < 10 ? "0" + hours : hours}:{minutes < 10 ? "0" + minutes : minutes}</p><br/>
         <form onSubmit={e => {e.preventDefault();search()}}>
           <input type="text" placeholder="Enter city name" value={inputCity} onChange={e => setInputCity(e.target.value)} required/>
         </form>
@@ -145,10 +150,10 @@ function App() {
         <div id="info">
           <div><span>Humidity:</span> <br/>{humidity}<br/><span>%</span><img src={humidityImage} alt="" width="50" height="50"/></div>
           <div><span>Wind Speed:</span> <br/>{windSpeed}<br/> <span>m/s</span><img src={windSpeedImage} alt="" width="50" height="50"/></div>
-          <div><span>Wind Direction:</span> <br/>{windDirection}<img src={compass} alt="" width="50" height="50"/></div>
+          <div><span>Wind Direction:</span> <br/>{windDirection}<br/><span>({windDegs}°)</span><img src={compass} alt="" width="50" height="50"/></div>
           <div><span>Visibility:</span> <br/>{visibility}<br/><span>km</span><img src={binoculars} alt="" width="50" height="50"/></div>
-          <div><span>Sunrise:</span> <br/>{sunrise}<img src={sunriseImage} alt="" width="50" height="50"/></div>
-          <div><span>Sunset:</span> <br/>{sunset}<img src={sunsetImage} alt="" width="50" height="50"/></div>
+          <div><span>Sunrise:</span> <br/>{sunrise}<br/><span>(local time)</span><img src={sunriseImage} alt="" width="50" height="50"/></div>
+          <div><span>Sunset:</span> <br/>{sunset}<br/><span>(local time)</span><img src={sunsetImage} alt="" width="50" height="50"/></div>
         </div>
         <h6>ZUMTHEZAZAKING &copy;2021</h6>
       </div>
