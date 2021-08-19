@@ -58,22 +58,22 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={search}>
-        <input type="text" placeholder="Enter city name" value={inputCity} onChange={e => setInputCity(e.target.value)} required/>
-        <input type="submit" value="Search"/>
-      </form>
       <h1>{cityName},{country}</h1>
       <h2>{description}</h2>
       <h3>{(temp - 273.15).toFixed(0)}{"°C"}</h3>
       <h4>Feels like {(feelTemp - 273.15).toFixed(0)}{"°C"}</h4>
       <br/><br/>
+      <form onSubmit={search}>
+        <input type="text" placeholder="Enter city name" value={inputCity} onChange={e => setInputCity(e.target.value)} required/>
+        <input type="submit" value="Search"/>
+      </form>
       <p>
-        Humidity:{humidity}%<br/><br/>
-        Wind Speed:{windSpeed}m/s<br/><br/>
-        Wind Direction:{windDirection}<br/><br/>
-        Visibility:{visibility}km<br/><br/>
-        Sunrise:{sunrise}<br/><br/>
-        Sunset:{sunset}<br/><br/>
+        Humidity: {humidity}%<br/><br/>
+        Wind Speed: {windSpeed} m/s<br/><br/>
+        Wind Direction: {windDirection}°<br/><br/>
+        Visibility: {visibility} km<br/><br/>
+        Sunrise: {sunrise}<br/><br/>
+        Sunset: {sunset}<br/><br/>
       </p>
     </div>
   );
