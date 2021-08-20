@@ -140,7 +140,7 @@ function App() {
       <div id="LeftSide">
         <h1>{cityName}, {country}</h1>
         <h2>{description}</h2>
-        <WeatherIcon iconId={weatherId} name="owm" night={hours > 19 || hours < 7 ? true : false} className="weatherIcon"/>
+        <WeatherIcon iconId={weatherId} name="owm" night={hours >= parseInt(sunset.slice(0,2)) || hours < parseInt(sunrise.slice(0,2))} className="weatherIcon"/>
         <p id="temp">{parseInt(temp)}°C</p>
         <h4>Feels like {parseInt(feelTemp)}°C</h4>
       </div>
