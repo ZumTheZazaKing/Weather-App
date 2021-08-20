@@ -152,7 +152,7 @@ function App() {
         <br/>
         <div id="info">
           <div><span>Humidity:</span> <br/>{humidity}<br/><span>%</span><img src={humidityImage} alt="" width="50" height="50"/></div>
-          <div><span>Wind Speed:</span> <br/>{windSpeed}<br/> <span>m/s</span><img src={windSpeedImage} alt="" width="50" height="50"/></div>
+          <div><span>Wind Speed:</span> <br/>{parseFloat(windSpeed).toFixed(2)}<br/> <span>m/s</span><img src={windSpeedImage} alt="" width="50" height="50"/></div>
           <div><span>Wind Direction:</span> <br/>{windDirection}<br/><span>({windDegs}°)</span><img src={compass} alt="" width="50" height="50"/></div>
           <div><span>Visibility:</span> <br/>{visibility}<br/><span>km</span><img src={binoculars} alt="" width="50" height="50"/></div>
           <div><span>Sunrise:</span> <br/>{sunrise}<br/><span>(local time)</span><img src={sunriseImage} alt="" width="50" height="50"/></div>
